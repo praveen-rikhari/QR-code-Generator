@@ -1,5 +1,6 @@
-import { useState } from "react"
-import QRCode from "react-qr-code"
+import { useState } from "react";
+import QRCode from "react-qr-code";
+import "./App.css";
 
 function App() {
   const [qrCode, setQrCode] = useState("");
@@ -7,32 +8,32 @@ function App() {
 
   function handleGenerateQrCode() {
     setQrCode(input);
-    setInput('');
+    setInput("");
   }
+
   return (
-    <div>
-      <h1>QR code Generator</h1>
-      <div>
+    <div className="container">
+      <h1>QR Code Generator</h1>
+      <div className="input-container">
         <input
           type="text"
           name="qr-code"
           value={input}
-          placeholder="Enter value to genrate QR code"
+          placeholder="Enter value to generate QR code"
           onChange={(e) => setInput(e.target.value)}
         />
-
         <button
-          disabled={input && input.trim() !== "" ? false : true}
+          disabled={!input || input.trim() === ""}
           onClick={handleGenerateQrCode}
         >
           Generate
         </button>
       </div>
-      <div>
+      <div className="qr-code-container">
         <QRCode id="qr-code-value" value={qrCode} />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
