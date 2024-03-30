@@ -5,6 +5,10 @@ function App() {
   const [qrCode, setQrCode] = useState("");
   const [input, setInput] = useState("");
 
+  function handleGenerateQrCode() {
+    setQrCode(input);
+    setInput('');
+  }
   return (
     <div>
       <h1>QR code Generator</h1>
@@ -14,15 +18,18 @@ function App() {
           name="qr-code"
           value={input}
           placeholder="Enter value to genrate QR code"
-          onChange={(e) => e.target.value}
+          onChange={(e) => setInput(e.target.value)}
         />
 
-        <button>
+        <button
+          disabled={input && input.trim() !== "" ? false : true}
+          onClick={handleGenerateQrCode}
+        >
           Generate
         </button>
       </div>
       <div>
-        <QRCode id="qr-code-value" value={qrCode}/>
+        <QRCode id="qr-code-value" value={qrCode} />
       </div>
     </div>
   )
