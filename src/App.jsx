@@ -30,7 +30,7 @@ function App() {
         </button>
       </div>
       <div className="qr-code-container">
-        <QRCode id="qr-code-value" value={qrCode} />
+        <QRCode id="qr-code-value" value={qrCode} size={250} bgColor="#fff" />
       </div>
     </div>
   );
